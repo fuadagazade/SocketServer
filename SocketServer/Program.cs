@@ -31,6 +31,7 @@ namespace SocketServer
             else
             {
                 Console.WriteLine("You need send port. Example SocketServer --port:123 or SocketServer -P:123");
+                return;
             }
 
             if(port == -1)
