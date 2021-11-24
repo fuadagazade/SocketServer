@@ -37,6 +37,7 @@ namespace SocketServer
             if(port == -1)
             {
                 Console.WriteLine("Wrong port");
+                return;
             }
 
             Console.WriteLine("Welcome to Socket Server!");
@@ -121,6 +122,16 @@ namespace SocketServer
             try
             { 
                 received = client.Socket.EndReceive(result);
+
+               if(received == 0)
+                {
+                    Console.WriteLine($"Client {client.Socket.RemoteEndPoint} disconnected!");
+
+                    client.Dispose();
+                    clients.Remove(client);
+
+                    return;
+                }
             }
             catch (Exception ex)
             {

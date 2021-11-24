@@ -29,7 +29,7 @@ namespace SocketServer
 
         public string ReceivedText()
         {
-            return Encoding.ASCII.GetString(Received, 0, Received.TakeWhile(c => c != 0).Count());
+            return Encoding.ASCII.GetString(Received, 0, ReceivedCount + 1);
         }
 
         public void Dispose()
